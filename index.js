@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   showSection('list');
 
-  function updateClock() {
+  const updateClock = () => {
     const now = DateTime.now().toLocaleString(DateTime.DATETIME_FULL);
     clockDiv.textContent = now;
-  }
+  };
 
   // Update the clock initially
   updateClock();

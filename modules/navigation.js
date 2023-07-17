@@ -1,4 +1,4 @@
-export default function showSection(sectionName) {
+const showSection = (sectionName) => {
   const listDiv = document.querySelector('.list');
   const formDiv = document.getElementById('form');
   const contactDiv = document.querySelector('.contact');
@@ -20,4 +20,6 @@ export default function showSection(sectionName) {
     default:
       break;
   }
-}
+};
+
+export default showSection;

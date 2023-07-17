@@ -73,7 +73,7 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-hhttps://github.com/AliRezaBmeDu/book-shelf
+https://github.com/AliRezaBmeDu/awesome-books.git
 
 
 ### Install
@@ -132,7 +132,7 @@ To run the project, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/AliRezaBmeDu/conference-capstone/issues).
+Feel free to check the [issues page](https://github.com/AliRezaBmeDu/awesome-books/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

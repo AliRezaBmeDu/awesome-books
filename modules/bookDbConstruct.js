@@ -17,36 +17,47 @@ class BookDB {
         title: 'The Song of Ice and Fire',
         author: 'George R.R. Martin',
       },
-    ]; // initializing the book database
+    ];
   }
 
-  retrieveFromStorage() {
+  retrieveFromStorage = () => {
     const storedBookDB = localStorage.getItem('bookDB');
     if (storedBookDB) {
       this.books = JSON.parse(storedBookDB);
     }
-  }
+  };
 
-  storeToStorage() {
+  storeToStorage = () => {
     localStorage.setItem('bookDB', JSON.stringify(this.books));
-  }
+  };
 
-  createBookshelf() {
+  createBookshelf = () => {
     const bookshelf = document.getElementById('books');
-    bookshelf.innerHTML = '';
+    bookshelf.textContent = ''; // Clear existing content
 
     this.books.forEach((book) => {
       const bookElement = document.createElement('div');
       bookElement.classList.add('singlebook');
-      bookElement.innerHTML = `
-            <div class="book-detail">"<strong>${book.title}</strong>"  <strong>by</strong> ${book.author}</div>
-            <button class="remove" onclick="bookDB.removeBook('${book.title}', '${book.author}')">remove</button>
-            `;
+
+      const bookDetail = document.createElement('div');
+      bookDetail.classList.add('book-detail');
+      bookDetail.innerHTML = `"${book.title}"  <strong>by</strong> ${book.author}`;
+      bookElement.appendChild(bookDetail);
+
+      const removeButton = document.createElement('button');
+      removeButton.classList.add('remove');
+      removeButton.id = `${book.title}-${book.author}`;
+      removeButton.textContent = 'remove';
+      removeButton.addEventListener('click', () => {
+        this.removeBook(book.title, book.author);
+      });
+      bookElement.appendChild(removeButton);
+
       bookshelf.appendChild(bookElement);
     });
-  }
+  };
 
-  clickToAdd() {
+  clickToAdd = () => {
     const title = document.getElementById('new-title');
     const author = document.getElementById('new-author');
 
@@ -61,13 +72,13 @@ class BookDB {
     } else {
       this.createBookshelf();
     }
-  }
+  };
 
-  removeBook(title, author) {
+  removeBook = (title, author) => {
     this.books = this.books.filter((book) => book.title !== title || book.author !== author);
     this.storeToStorage();
     this.createBookshelf();
-  }
+  };
 }
 
 const bookDB = new BookDB();
